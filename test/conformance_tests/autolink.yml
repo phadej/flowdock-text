@@ -655,3 +655,15 @@ tests:
     - description: "Handle terminator models properly"
       text: "Terminator models: http://en.wikipedia.org/wiki/Terminator_(character_concept)#Models"
       expected: "Terminator models: <a href=\"http://en.wikipedia.org/wiki/Terminator_(character_concept)#Models\">http://en.wikipedia.org/wiki/Terminator_(character_concept)#Models</a>"
+
+    - description: "issue #8, Link with complicated hashes: colon"
+      text: "http://example.com/foo:(bar)"
+      expected: '<a href="http://example.com/foo:(bar)">http://example.com/foo:(bar)</a>'
+
+    - description: "issue #8, Link with complicated hashes: parentheses"
+      text: "http://example.com/foo(bar)"
+      expected: '<a href="http://example.com/foo(bar)">http://example.com/foo(bar)</a>'
+
+    - description: "issue #8, Link with complicated hashes"
+      text: "https://mixpanel.com/report/1234/funnels/#view/1234/from_date:0,segfilter:(filters:!((filter:(operand:!(app,App),operator:%3D%3D),property:utm_medium,selected_property_type:string,type:string),(property:ab-test-01-08-14,selected_property_type:string,type:string)),op:and),segment_type:string,to_date:0"
+      expected: '<a href="https://mixpanel.com/report/1234/funnels/#view/1234/from_date:0,segfilter:(filters:!((filter:(operand:!(app,App),operator:%3D%3D),property:utm_medium,selected_property_type:string,type:string),(property:ab-test-01-08-14,selected_property_type:string,type:string)),op:and),segment_type:string,to_date:0">https://mixpanel.com/report/1234/funnels/#view/1234/from_date:0,segfilter:(filters:!((filter:(operand:!(app,App),operator:%3D%3D),property:utm_medium,selected_property_type:string,type:string),(property:ab-test-01-08-14,selected_property_type:string,type:string)),op:and),segment_type:string,to_date:0</a>'
